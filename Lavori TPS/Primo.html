@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Primo Esercizio</title>
+</head>
+<body>
+    <!--I due input di testo-->
+    <input type="text" id="nome" placeholder="Inserire nome">
+    <input type="text" id="cognome" placeholder="Inserire cognome">
+
+    <!--bottone che richiama la funzione stampa-->
+    <button onclick="stampa()">stampa</button>
+
+    <!--dove si stampano-->
+    <h3 id="risultato"></h3> 
+
+    <script>
+        function stampa() {
+            //Prendo i valori scritti in input
+            let nome = document.getElementById("nome").value;
+            let cognome = document.getElementById("cognome").value;
+
+            //Stampo i valori nello spazio h3
+            document.getElementById("risultato").textContent = nome + " " + cognome;
+            //Cambio il colore dei valori in rosso
+            document.getElementById("risultato").style.color = "red";
+        }
+    </script>

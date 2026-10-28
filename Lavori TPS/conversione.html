@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Esercizio Conversione</title>
+</head>
+<body>
+    <!--L'input-->
+    <input type="number" id="numero" placeholder="Inserire numero"><div class="10">
+   
+
+    <!--bottone che richiama la funzione converti-->
+    <button onclick="converti()">converti</button>
+
+    <!--dove si stampano-->
+    <h3 id="conversione"></h3> 
+
+    <script>
+        function converti() {
+            //Prendo i valori scritti in input
+            let numero = parseInt(document.getElementById("numero").value);
+            //Creo una variabile vuota per la conversione
+            let conversione = "";
+            do {
+                //riempo la variabile conversione con il resto della divisione per 2 e aggiorno il numero dividendo per 2
+                conversione = numero % 2 + conversione;
+                numero = Math.floor(numero / 2);
+            } while (numero > 0)
+
+            //Stampo il risultato nello spazio h3
+            document.getElementById("conversione").textContent = conversione;
+            
+        }
+    </script>
