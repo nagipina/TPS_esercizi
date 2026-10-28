@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Esercizio Conversione</title>
+</head>
+<body>
+    <style>
+        .contaneir {
+            float: left;
+            width: 100%;
+        }
+        .contaneir2 {
+            float: left;
+            width: 100%;
+        }
+
+        input {
+            width: 100px;
+            float: left;
+        }
+        h3 {
+            width: 100px;
+            float: left;
+        }
+    </style>
+    <div class="contaneir">
+    <input type="number" id="numero" placeholder="Inserire numero"><div class="10">
+    <input type="number" id="numero2" placeholder="Inserire numero"><div class="10"></div>
+    <input type="number" id="numero3" placeholder="Inserire numero"><div class="10"></div>
+    <input type="number" id="numero4" placeholder="Inserire numero"><div class="10"></div>
+    </div>
+
+    <button onclick="converti()">converti</button>
+
+    <div>
+    <h3 id="conversione"></h3> 
+    <h3 id="conversione1"></h3> 
+    <h3 id="conversione2"></h3> 
+    <h3 id="conversione3"></h3> 
+    </div>
+
+    <div class="contaneir2">
+    <input type="number" id="prefix" placeholder="Inserire prefix">
+    <input type="number" id="suffix" placeholder="Inserire suffix">
+    <button onclick="stampa()">stampa</button>
+    </div>
+
+    <div>
+    <h3 id="prefix"></h3>
+    </div>
+
+    <script>
+        function converti() {
+            let numero = parseInt(document.getElementById("numero").value);
+             let numero1 = parseInt(document.getElementById("numero2").value);
+              let numero2 = parseInt(document.getElementById("numero3").value);
+               let numero3 = parseInt(document.getElementById("numero4").value);
+
+            let conversione = "";
+            let conversione1 = "";
+            let conversione2 = "";
+            let conversione3 = "";
+            
+            do {
+                conversione = numero % 2 + conversione;
+                numero = Math.floor(numero / 2);
+            } while (numero > 0)
+            let String = conversione.toString();
+            if(String.length<8) {
+                for(let i = String.length+1; i < 9; i++) {
+                    String = String + "0";
+                }
+                let s =invertiStringa(String)
+                document.getElementById("conversione").textContent = s;
+            } else {
+                let s = invertiStringa(String)
+                document.getElementById("conversione").textContent = s;
+            }
+
+            do {
+                conversione1 = numero1 % 2 + conversione1;
+                numero1 = Math.floor(numero1 / 2);
+            } while (numero1 > 0)
+            let String1 = conversione1.toString();
+            if(String1.length<8) {
+                for(let i = String1.length+1; i < 9; i++) {
+                    String1 = String1 + "0";
+                }
+                let s =invertiStringa(String1)
+                document.getElementById("conversione1").textContent = s;
+            } else {
+                let s = invertiStringa(String1)
+                document.getElementById("conversione1").textContent = s;
+            }
+
+            do {
+                conversione2 = numero2 % 2 + conversione2;
+                numero2 = Math.floor(numero2 / 2);
+            } while (numero2 > 0)
+            let String2 = conversione2.toString();
+            if(String2.length<8) {
+                for(let i = String2.length+1; i < 9; i++) {
+                    String2 = String2 + "0";
+                }
+                let s =invertiStringa(String2)
+                document.getElementById("conversione2").textContent = s;
+            } else {
+                let s = invertiStringa(String2)
+                document.getElementById("conversione2").textContent = s;
+            }
+
+            do {
+                conversione3 = numero3 % 2 + conversione3;
+                numero3 = Math.floor(numero3/ 2);
+            } while (numero3 > 0)
+            let String3 = conversione3.toString();
+            if(String3.length<8) {
+                for(let i = String3.length+1; i < 9; i++) {
+                    String3 = String3 + "0";
+                }
+                let s =invertiStringa(String3)
+                document.getElementById("conversione3").textContent = s;
+            } else {
+                let s = invertiStringa(String3)
+                document.getElementById("conversione3").textContent = s;
+            }
+        
+        }
+
+        function invertiStringa(str) {
+  
+            if (str === "") {
+            return "";
+        }
+        return invertiStringa(str.slice(1)) + str[0];
+        }
+
+        function stampa() {
+            let prefix = document.getElementById("prefix").value;
+            document.getElementById("prefix").textContent = prefix;
+            
+        }
+
+    </script>
