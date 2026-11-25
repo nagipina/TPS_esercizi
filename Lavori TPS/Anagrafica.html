@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Anagrafica</title>
+</head>
+<style>
+  h4 {
+    margin-bottom: 0; /* Toglie completamente lo spazio sotto il titolo */
+  }
+  textarea {
+  resize: none;
+  }
+</style>
+<body>
+    <h4>NOME:</h4>
+    <input type="text" id="Nome" placeholder="Inserire nome"><div>
+
+    <h4>COGNOME:</h4>
+    <input type="text" id="Cognome" placeholder="Inserire cognome"><div>
+
+    <h4>ETA':</h4>
+    <input type="number" id="Eta" placeholder="Inserire et&agrave;"><div></div>
+
+    <h4>SESSO:</h4>
+    <input type="radio" id="maschio" name="sesso" value="Maschio">Maschio<br>
+    <input type="radio" id="femmina" name="sesso" value="Femmina">Femmina<br>
+    <input type="radio" id="altro" name="sesso" value="Altro">Altro<br>
+
+    <h4>INDIRIZZO:</h4>
+    <input type="text" id="Indirizzo" placeholder="Inserire Indirizzo"><div></div>
+
+    <h4>CITTA':</h4>
+    <input type="text" id="Citta" placeholder="Inserire citt&agrave;"><div></div>
+
+    <h4>PROVINCIA:</h4> 
+    <label for="provincia">Provincia</label>
+    <select id="provincia" name="provincia">
+        <option value="scegli">Inserisci citt&agrave;</option>
+        <option value="milano">Milano</option>
+        <oprion value="genova">Genova</oprion>
+        <option value="roma">Roma</option>
+        <option value="firenze">Firenze</option>
+        <option value="campobasso">Campobasso</option>
+    </select>
+
+    <h4>SPORT PRATICATI:</h4>
+    <input type="checkbox" id="calcio" name="sport" value="Calcio">
+    <label for="calcio">Calcio</label><br>
+    <input type="checkbox" id="pallavolo" name="sport" value="Pallavolo">
+    <label for="pallavolo">Pallavolo</label><br>
+    <input type="checkbox" id="tennis" name="sport" value="Tennis">
+    <label for="tennis">Tennis</label><br>
+    <input type="checkbox" id="nuoto" name="sport" value="Nuoto">
+    <label for="nuoto">Nuoto</label><br>
+
+    <h4>COMMENTI:</h4>
+    <textarea id="Anagrafica" name="Anagrafica" rows="4" cols="50">
+    Scrivi qui se hai dei commenti da fare
+    </textarea>
+
+    <button onclick="tabella()">Invia</button>
+
+    <h4>TABELLA FINALE:</h4>
+    <table style="width:100%" id="Tabella">
+  <tr>
+    <th>Nome</th>
+    <th>Cognome</th>
+    <th>Et&agrave;</th>
+    <th>Sesso</th>
+    <th>Indirizzo</th>
+    <th>Citt&agrave;</th>
+    <th>Provincia</th>
+    <th>Sport</th>
+    <th>Commenti</th>
+  </tr>
+ 
+</table>
+
+
+<script>
+
+ function tabella() {
+    let nome = document.getElementById("Nome").value;
+    let cognome = document.getElementById("Cognome").value;
+    let eta = document.getElementById("Eta").value;
+    let radioSesso = document.getElementsByName("sesso");
+    let sessoScelto = "Non specificato";
+      for (let i = 0; i < radioSesso.length; i++) {
+        if (radioSesso[i].checked == true) {
+        sessoScelto = radioSesso[i].value;
+        }
+      }
+    let indirizzo = document.getElementById("Indirizzo").value;
+    let citta = document.getElementById("Citta").value;
+    let provincia = document.getElementById("provincia").value;
+    let checkSport = document.getElementsByName("sport");
+    let sportScelti = "";
+      for (let i = 0; i < checkSport.length; i++) {
+        if (checkSport[i].checked == true) {
+          if (sportScelti != "") {
+            sportScelti += ", ";
+          }
+          sportScelti += checkSport[i].value;
+        }
+      }
+    if (sportScelti == "") {
+      sportScelti = "Nessuno";
+    }
+    let commenti = document.getElementById("Anagrafica").value;
+    let text = "<tr><td>"+nome+"</td>" + "<td>"+cognome+"</td>" + "<td>"+eta+"</td>" + "<td>"+sessoScelto+"</td>" + "<td>"+indirizzo+"</td>" + "<td>"+citta+"</td>" + "<td>"+provincia+"</td>" + "<td>"+sportScelti+"</td>"  + "<td>"+commenti+"</td>";
+    document.getElementById("Tabella").innerHTML+=text;
+  }
+
+
+</script>
+</body>
+</html>
